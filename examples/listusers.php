@@ -4,10 +4,11 @@ require_once '../UberspaceMM.class.php';
 echo '<table class="table table-bordered table-hover">';
 echo '<tr><th>Name</th><th>Mailbox</th><th>Forwarding destinations</th></tr>';
 foreach(UberspaceMM::getUsernames() as $arrUser) {
-	echo '<tr><td>' . $arrUser['name'] . '</td><td>' . ($arrUser['isMailbox'] ? 'Mailbox' : 'Forwarder') . '</td><td>' . implode(', ', $arrUser['aliases']) . '</td></tr>';
+	echo '<tr><td>' . $arrUser['name'] . '</td><td>' . ($arrUser['isMailbox'] ? 'Mailbox' : 'Forwarder') . '</td><td>' . implode(', ', $arrUser['forward']) . '</td></tr>';
 }
 echo '</table>';
-$strContents = ob_get_flush();
+$strContents = ob_get_contents();
+ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="de" charset="utf-8">

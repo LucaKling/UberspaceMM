@@ -7,13 +7,13 @@
  */
 class UberspaceMM {
 	/**
-	 * Get all currently defined usernames (mailboxes and aliases)
+	 * Get all currently defined usernames (mailboxes and forwarding destinations)
 	 * @param object
 	 * @return array
 	 */
 	public function getUsernames() {
 		$arrUsernames = array();
-		$arrAliases = array();
+		$arrForward = array();
 
 		$usernames = shell_exec('listvdomain');
 		$usernames = preg_split('/[\r\n]+/', $usernames, NULL, PREG_SPLIT_NO_EMPTY);
@@ -24,14 +24,14 @@ class UberspaceMM {
 			$value = explode(" ", $value);
 			if(count($value) > 2) {
 				for($x = 2; $x < count($value); $x++)
-					$arrAliases[$value[0]][$value[$x]] = $value[$x];
+					$arrForward[$value[0]][$value[$x]] = $value[$x];
 			} else
-				$arrAliases[$value[0]] = array();
+				$arrForward[$value[0]] = array();
 			switch($value[1]) {
 				case 'Yes': $isMailbox = true; break;
 				case 'No': $isMailbox = false; break;
 			}
-			$arrUsernames[$value[0]] = array('name' => $value[0], 'isMailbox' => $isMailbox, 'aliases' => $arrAliases[$value[0]]);
+			$arrUsernames[$value[0]] = array('name' => $value[0], 'isMailbox' => $isMailbox, 'forward' => $arrForward[$value[0]]);
 		}
 		return $arrUsernames;
 	}
