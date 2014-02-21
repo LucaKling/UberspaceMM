@@ -2,7 +2,7 @@
 	Header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
-<html lang="de" charset="utf-8">
+<html lang="en" charset="utf-8">
 	<head>
     	<title>UberspaceMM :: ListUsers example</title>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
