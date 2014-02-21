@@ -1,14 +1,5 @@
 <?php
-ob_start();
-require_once '../UberspaceMM.class.php';
-echo '<table class="table table-bordered table-hover">';
-echo '<tr><th>Name</th><th>Type</th><th>Forwarding destinations</th></tr>';
-foreach(UberspaceMM::getUsernames() as $arrUser) {
-	echo '<tr><td>' . $arrUser['name'] . '</td><td>' . ($arrUser['isMailbox'] ? 'Mailbox' : 'Forwarder') . '</td><td>' . implode(', ', $arrUser['forward']) . '</td></tr>';
-}
-echo '</table>';
-$strContents = ob_get_contents();
-ob_end_flush();
+	Header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
 <html lang="de" charset="utf-8">
@@ -23,7 +14,15 @@ ob_end_flush();
     </head>
     
     <body>
-    	<?=$strContents?>
+		<?php
+        require_once '../UberspaceMM.class.php';
+        echo '<table class="table table-bordered table-hover">';
+        echo '<tr><th>Name</th><th>Type</th><th>Forwarding destinations</th></tr>';
+        foreach(UberspaceMM::getUsernames() as $arrUser) {
+            echo '<tr><td>' . $arrUser['name'] . '</td><td>' . ($arrUser['isMailbox'] ? 'Mailbox' : 'Forwarder') . '</td><td>' . implode(', ', $arrUser['forward']) . '</td></tr>';
+        }
+        echo '</table>';
+        ?>
     	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     </body>
 </html>
