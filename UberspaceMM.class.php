@@ -103,14 +103,15 @@ class UberspaceMM {
 		return false;
 	}
 	/**
-	 * Add alias to accounts
+	 * Add alias (forwarder) to accounts
+	 * supports several destinations, just place a whitespace in between the destinations
 	 *
 	 * @param string
 	 * @param string
 	 * @return bool
 	 */
-	function addAlias($strMailbox, $strPassword) {
-		if(shell_exec('vaddalias ' . $strMailbox))
+	function addAlias($strMailbox, $strDestination) {
+		if(shell_exec('vaddalias ' . $strMailbox . ' ' . $strDestination))
 			return true;
 		else
 			return false;
