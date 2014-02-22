@@ -21,10 +21,8 @@
     
     <body>
     	<div class="container">
-            <div class="page-header">
-                <blockquote>
-                  <h1><a class="github-ref" href="https://github.com/LucaKling/UberspaceMM"><i class="fa fa-github"></i> UberspaceMM</a>::getUsernames() example</h1>
-                </blockquote>
+        	<div class="page-header">
+            	<h1><a class="github-ref" href="https://github.com/LucaKling/UberspaceMM"><i class="fa fa-github"></i> UberspaceMM</a>::getUsernames() example</h1>
             </div>
             <?php
             require_once '../UberspaceMM.class.php';
