@@ -7,6 +7,12 @@
     	<title>UberspaceMM::getUsernames() example</title>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <code>
+        	.github-ref {
+            	text-decoration: none !important;
+            }
+        </code>
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -16,7 +22,9 @@
     <body>
     	<div class="container">
             <div class="page-header">
-                <h1>UberspaceMM::getUsernames() example</h1>
+                <blockquote>
+                  <h1><a class="github-ref" href="https://github.com/LucaKling/UberspaceMM"><i class="fa fa-github"></i> UberspaceMM</a>::getUsernames() example</h1>
+                </blockquote>
             </div>
             <?php
             require_once '../UberspaceMM.class.php';
