@@ -23,7 +23,7 @@
             echo '<table class="table table-bordered table-hover">';
             echo '<tr><th>Name</th><th>Type</th><th>Forwarding destinations</th></tr>';
             foreach(UberspaceMM::getUsernames() as $arrUser) {
-                echo '<tr><td>' . $arrUser['name'] . '</td><td>' . ($arrUser['isMailbox'] ? 'Mailbox' : 'Forwarder') . '</td><td>' . implode(', ', $arrUser['forward']) . '</td></tr>';
+                echo '<tr><td>' . $arrUser['name'] . '</td><td>' . ($arrUser['isMailbox'] ? 'Mailbox' : 'Forwarder') . '</td><td>' . implode(', ', $arrUser['forwards']) . '</td></tr>';
             }
             echo '</table>';
             ?>

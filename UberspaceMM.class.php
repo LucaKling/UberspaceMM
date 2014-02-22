@@ -13,7 +13,7 @@ class UberspaceMM {
 	 */
 	public function getUsernames() {
 		$arrUsernames = array();
-		$arrForward = array();
+		$arrForwards = array();
 
 		$usernames = shell_exec('listvdomain');
 		$usernames = preg_split('/[\r\n]+/', $usernames, NULL, PREG_SPLIT_NO_EMPTY);
@@ -24,14 +24,14 @@ class UberspaceMM {
 			$value = explode(" ", $value);
 			if(count($value) > 2) {
 				for($x = 2; $x < count($value); $x++)
-					$arrForward[$value[0]][$value[$x]] = $value[$x];
+					$arrForwards[$value[0]][$value[$x]] = $value[$x];
 			} else
-				$arrForward[$value[0]] = array();
+				$arrForwards[$value[0]] = array();
 			switch($value[1]) {
 				case 'Yes': $isMailbox = true; break;
 				case 'No': $isMailbox = false; break;
 			}
-			$arrUsernames[$value[0]] = array('name' => $value[0], 'isMailbox' => $isMailbox, 'forward' => $arrForward[$value[0]]);
+			$arrUsernames[$value[0]] = array('name' => $value[0], 'isMailbox' => $isMailbox, 'forwards' => $arrForwards[$value[0]]);
 		}
 		return $arrUsernames;
 	}
@@ -42,7 +42,7 @@ class UberspaceMM {
 	 * @param string
 	 * @return bool
 	 */
-	function addNewUser($strMailbox, $strPassword) {
+	public function addNewUser($strMailbox, $strPassword) {
 		$strPassword = utf8_decode($strPassword);
 		$strCommand = 'vadduser ' . $strMailbox;
 		
@@ -82,7 +82,7 @@ class UberspaceMM {
 	 * @param string
 	 * @return bool
 	 */
-	function setNewPassword($strMailbox, $strPassword) {
+	public function setNewPassword($strMailbox, $strPassword) {
 		$strPassword = utf8_decode($strPassword);
 		$strCommand = 'vpasswd ' . $strMailbox;
 		
@@ -103,15 +103,31 @@ class UberspaceMM {
 		return false;
 	}
 	/**
-	 * Add alias (forwarder) to accounts
+	 * Add alias (forwarder) account
+	 * This function adds a forwarder account which forwards mails sent to the account to the given forwards
 	 * supports several destinations, just place a whitespace in between the destinations
 	 *
 	 * @param string
 	 * @param string
 	 * @return bool
 	 */
-	function addAlias($strMailbox, $strDestination) {
+	public function addNewAlias($strMailbox, $strDestination) {
 		if(shell_exec('vaddalias ' . $strMailbox . ' ' . $strDestination))
+			return true;
+		else
+			return false;
+	}
+	/**
+	 * Change/Replace forwards of an account
+	 * This functions replaces the forward destinations of an account with the given ones
+	 * supports several destinations, just place a whitespace in between the destinations
+	 *
+	 * @param string
+	 * @param string
+	 * @return bool
+	 */
+	public function changeForwards($strMailbox, $strDestination) {
+		if(shell_exec('vchforwards ' . $strMailbox . ' ' . $strDestination))
 			return true;
 		else
 			return false;
