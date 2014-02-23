@@ -4,7 +4,7 @@ The Uberspace Mail Manager Class provides some essential functions to administra
 *Please note*: The class is still in development and as soon as it is finished, more information will be added to this repo.
 
 ## Function Overview
-* **UberspaceMM::getUsernames()** - Lists all usernames including forwarding destinations
+* **UberspaceMM::getUsernames($onlyUsernames = false)** - Lists all usernames including forwarding destinations (if *$onlyUsernames = true* it only returns an array of usernames)
 * **UberspaceMM::addNewUser($strMailbox, $strPassword)** - Adds new mailbox with the given credentials
 * **UberspaceMM::deleteUser($strMailboxes)** - Deletes the mailbox(es) with the given name(s)
 * **UberspaceMM::setNewPassword($strMailbox, $strPassword)** - Sets the given password for the given mailbox
