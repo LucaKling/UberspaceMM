@@ -69,8 +69,8 @@ class UberspaceMM {
 	 * @param string
 	 * @return bool
 	 */
-	public function deleteUser($strMailbox) {
-		if(shell_exec('vdeluser ' . $strMailbox))
+	public function deleteUser($strMailboxes) {
+		if(shell_exec('vdeluser ' . $strMailboxes))
 			return true;
 		else
 			return false;
@@ -111,8 +111,8 @@ class UberspaceMM {
 	 * @param string
 	 * @return bool
 	 */
-	public function addNewAlias($strMailbox, $strDestination) {
-		if(shell_exec('vaddalias ' . $strMailbox . ' ' . $strDestination))
+	public function addNewAlias($strMailbox, $strDestinations) {
+		if(shell_exec('vaddalias ' . $strMailbox . ' ' . $strDestinations))
 			return true;
 		else
 			return false;
@@ -126,8 +126,8 @@ class UberspaceMM {
 	 * @param string
 	 * @return bool
 	 */
-	public function changeForwards($strMailbox, $strDestination) {
-		if(shell_exec('vchforwards ' . $strMailbox . ' ' . $strDestination))
+	public function changeForwards($strMailbox, $strDestinations) {
+		if(shell_exec('vchforwards ' . $strMailbox . ' ' . $strDestinations))
 			return true;
 		else
 			return false;
