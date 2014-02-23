@@ -7,6 +7,6 @@ The Uberspace Mail Manager Class provides some essential functions to administra
 * **UberspaceMM::getUsernames()** - Lists all usernames including forwarding destinations
 * **UberspaceMM::addNewUser($strMailbox, $strPassword)** - Adds new mailbox with the given credentials
 * **UberspaceMM::deleteUser($strMailboxes)** - Deletes the mailbox(es) with the given name(s)
-* **UberspaceMM::setNewPasswort($strMailbox, $strPassword)** - Sets the given password for the given mailbox
+* **UberspaceMM::setNewPassword($strMailbox, $strPassword)** - Sets the given password for the given mailbox
 * **UberspaceMM::addNewAlias($strMailbox, $strDestinations)** - Adds new alias account which redirects mails - which were sent to the given mailbox - to the given destinations(s)
 * **UberspaceMM::changeForwards($strMailbox, $strDestinations)** - Replaces the forwarding destinations of the given mailbox with the given destination(s)
