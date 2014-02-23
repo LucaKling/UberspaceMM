@@ -19,12 +19,12 @@ class UberspaceMM {
 		$usernames = preg_split('/[\r\n]+/', $usernames, NULL, PREG_SPLIT_NO_EMPTY);
 		unset($usernames[0]);
 		foreach ($usernames as $key => $value) {
+			$isMailbox = null;
+			$x = null;
+			$value = explode(" ", $value);
 			if($onlyUsernames) {
 				$arrUsernames[$value[0]] = $value[0];
 			} else {
-				$isMailbox = null;
-				$x = null;
-				$value = explode(" ", $value);
 				if(count($value) > 2) {
 					for($x = 2; $x < count($value); $x++)
 						$arrForwards[$value[0]][$value[$x]] = $value[$x];
