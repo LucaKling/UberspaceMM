@@ -1,5 +1,5 @@
 # UberspaceMM
-The Uberspace Mail Manager Class provides some essential functions to administrate the mail server the german Webhoster [Uberspace](https://uberspace.de) is using.
+The Uberspace Mail Manager Class provides some essential functions to administrate the mail server with VMailMgr.
 
 *Please note*: The class is still in development and as soon as it is finished, more information will be added to this repo.
 
@@ -14,5 +14,8 @@ The Uberspace Mail Manager Class provides some essential functions to administra
 ## Examples
 Currently there are two examples; a small example of the `UberspaceMM::getUsernames()` function and a bigger example of all currently supported functions compressed into a control panel. Just have a look at the folder **examples**.
 
+## Prerequisites
+Please be sure you ran `vsetup` in the shell or already setup virtual mailboxes in the dashboard of your account.
+
 ## Installation
-Since Uberspace offers **git** on their machines, you can simply clone this repo by using the command `git clone https://github.com/LucaKling/UberspaceMM`. There is no configuration needed. Just have a look at the folder **examples**. If you want to use the examples, clone it into a folder which is reachable trough the web and if you want to use the class in your own script, just include the file **UberspaceMM.class.php** in the root folder.
+Since Uberspace offers **git** on their machines, you can simply clone this repo by using the command `git clone https://github.com/LucaKling/UberspaceMM`. There is no further configuration needed. Just have a look at the folder **examples**. If you want to use the examples, clone it into a folder which is reachable trough the web and if you want to use the class in your own script, just include the file **UberspaceMM.class.php** in the root folder.
