@@ -1,5 +1,5 @@
 # UberspaceMM
-The Uberspace Mail Manager Class provides some essential functions to administrate the mail server with VMailMgr.
+The Uberspace Mail Manager Class is written in PHP and provides some essential functions to administrate the mail server with VMailMgr.
 
 *Please note*: The class is still in development and as soon as it is finished, more information will be added to this repo.
 
