@@ -95,8 +95,10 @@ EOF;
 						if($_POST['password'] != $_POST['password2'])
 							$errors[] = 'The passwords do not match';
 						if(empty($errors)) {
-							UberspaceMM::addNewUser($_POST['mailbox_name'], $_POST['password']);
-							echo '<div class="alert alert-success"><b>Yay!</b> Added user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
+							if(UberspaceMM::addNewUser($_POST['mailbox_name'], $_POST['password']))
+								echo '<div class="alert alert-success"><b>Yay!</b> Added user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
+							else
+								echo '<div class="alert alert-danger"><b>Fawk!</b> Could not add the user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
 						} else {
 							echo '<div class="alert alert-danger"><b>Damn, there were errors!</b><br>';
 							echo '- ' . implode('<br>- ', $errors);
@@ -108,8 +110,10 @@ EOF;
 				} else if($path_info[1] == 'AddForwarder') {
 					if(!empty($_POST['mailbox_name']) && !empty($_POST['destinations'])) {
 							if(!in_array($_POST['mailbox_name'], UberspaceMM::getUsernames(true))) {
-								UberspaceMM::addNewAlias($_POST['mailbox_name'], implode(' ', explode(',', trim($_POST['destinations']))));
-								echo '<div class="alert alert-success"><b>Yay!</b> Added user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
+								if(UberspaceMM::addNewAlias($_POST['mailbox_name'], implode(' ', explode(',', trim($_POST['destinations'])))))
+									echo '<div class="alert alert-success"><b>Yay!</b> Added user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
+								else
+									echo '<div class="alert alert-danger"><b>Hmmpf!</b> Could not add the user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
 							} else {
 								echo '<div class="alert alert-danger"><b>Fawk!</b> The username <b>' . $_POST['mailbox_name'] . '</b> already exists.</div>';
 							}
@@ -119,8 +123,10 @@ EOF;
 				} else if($path_info[1] == 'Delete') {
 					if(!empty($path_info[2])) {
 						if(in_array($path_info[2], UberspaceMM::getUsernames(true))) {
-							UberspaceMM::deleteUser($path_info[2]);
-							echo '<div class="alert alert-success"><b>Yippieh!</b> The user <b>' . $path_info[2] . '</b> was successfully deleted.</div>';
+							if(UberspaceMM::deleteUser($path_info[2]))
+								echo '<div class="alert alert-success"><b>Yippieh!</b> The user <b>' . $path_info[2] . '</b> was successfully deleted.</div>';
+							else
+								echo '<div class="alert alert-danger"><b>Damn it!</b> Could not delete the user <b>' . $path_info[2] . '</b>.</div>';
 						} else {
 							echo '<div class="alert alert-warning"><b>OMG!</b> The user <b>' . $path_info[2] . '</b> does not even exist.</div>';
 						}
@@ -175,8 +181,10 @@ EOF;
 					if(!empty($_POST['mailbox_name']) && !empty($_POST['password']) && !empty($_POST['password2'])) {
 							if(in_array($_POST['mailbox_name'], UberspaceMM::getUsernames(true))) {
 								if($_POST['password'] == $_POST['password2']) {
-									UberspaceMM::setNewPassword($_POST['mailbox_name'], $_POST['password']);
-									echo '<div class="alert alert-success"><b>Yay!</b> Changed password for user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
+									if(UberspaceMM::setNewPassword($_POST['mailbox_name'], $_POST['password']))
+										echo '<div class="alert alert-success"><b>Yay!</b> Changed password for user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
+									else
+										echo '<div class="alert alert-danger"><b>Uncool!</b> Could not change the password for the user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
 								} else {
 									echo '<div class="alert alert-danger"><b>WTF?!</b> The passwords do not match.</div>';
 								}
@@ -189,8 +197,10 @@ EOF;
 				} else if($path_info[1] == 'ChangeDestinations') {
 					if(!empty($_POST['mailbox_name'])) {
 							if(in_array($_POST['mailbox_name'], UberspaceMM::getUsernames(true))) {
-								UberspaceMM::changeForwards($_POST['mailbox_name'], implode(' ', explode(',', trim($_POST['destinations']))));
-								echo '<div class="alert alert-success"><b>Yay!</b> Changed forwarding destinations for user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
+								if(UberspaceMM::changeForwards($_POST['mailbox_name'], implode(' ', explode(',', trim($_POST['destinations'])))))
+									echo '<div class="alert alert-success"><b>Yay!</b> Changed forwarding destinations for user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
+								else
+									echo '<div class="alert alert-danger"><b>Fuack!</b> It was impossible for me to change the destinations for the user <b>' . $_POST['mailbox_name'] . '</b>.</div>';
 							} else {
 								echo '<div class="alert alert-danger"><b>Fawk!</b> The user <b>' . $_POST['mailbox_name'] . '</b> does not exist.</div>';
 							}
