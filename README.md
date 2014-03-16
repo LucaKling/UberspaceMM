@@ -3,7 +3,7 @@ The Uberspace Mail Manager Class is written in PHP and provides some essential f
 
 *Please note*: The class is still in development and as soon as it is finished, more information will be added to this repo.
 
-Thanks to (Fabian Laule)[http://www.fabianlaule.de/] aka @fabil for his `setNewPassword`-function which I kind of "stole" from his (UberspaceMPC)[https://github.com/fabil/uberspacempc]-Repo :)
+Thanks to [Fabian Laule](http://www.fabianlaule.de/) aka [@fabil](https://github.com/fabil) for his `setNewPassword`-function which I kind of "stole" from his [UberspaceMPC](https://github.com/fabil/uberspacempc)-Repo :)
 
 ## Function Overview
 * `UberspaceMM::getUsernames($onlyUsernames = false)` - Lists all usernames including forwarding destinations (if `$onlyUsernames = true` it only returns an array of usernames)
