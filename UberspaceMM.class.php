@@ -9,8 +9,25 @@
  */
 class UberspaceMM {
 	/**
+	 * This functions does nothing but running the `vsetup`-command
+	 * @return bool
+	 */
+	public function setupVirtualMailboxes() {
+		$strCommand = 'vsetup';
+		
+		$descriptorspec = array();
+		
+		$process = proc_open($strCommand, $descriptorspec, $pipes, null, null);
+		
+		if(is_resource($process)) {
+			if(proc_close($process) == 0)
+				return true;
+		}
+		return false;
+	}
+	/**
 	 * Get all currently defined usernames (mailboxes and forwarding destinations)
-	 * @param object
+	 * @param bool
 	 * @return array
 	 */
 	public function getUsernames($onlyUsernames = false) {
