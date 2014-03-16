@@ -18,12 +18,12 @@ class UberspaceMM {
 		$arrForwards = array();
 
 		$usernames = shell_exec('listvdomain');
-		$usernames = preg_split('/[\r\n]+/', $usernames, NULL, PREG_SPLIT_NO_EMPTY);
+		$usernames = preg_split('/[\r\n]+/', $usernames, null, PREG_SPLIT_NO_EMPTY);
 		unset($usernames[0]);
 		foreach ($usernames as $key => $value) {
 			$isMailbox = null;
 			$x = null;
-			$value = explode(" ", $value);
+			$value = explode(' ', $value);
 			if($onlyUsernames) {
 				$arrUsernames[$value[0]] = $value[0];
 			} else {
@@ -53,10 +53,10 @@ class UberspaceMM {
 		$strCommand = 'vadduser ' . $strMailbox;
 		
 		$descriptorspec = array(
-				0 => array("pipe", "r")
+				0 => array('pipe', 'r')
 		);
 		
-		$process = proc_open($strCommand, $descriptorspec, $pipes, NULL, NULL);
+		$process = proc_open($strCommand, $descriptorspec, $pipes, null, null);
 		
 		if(is_resource($process)) {
 			fwrite($pipes[0], $strPassword);
@@ -101,7 +101,7 @@ class UberspaceMM {
 		$strCommand = 'vpasswd ' . $strMailbox;
 		
 		$descriptorspec = array(
-				0 => array("pipe", "r")
+				0 => array('pipe', 'r')
 		);
 		
 		$process = proc_open($strCommand, $descriptorspec, $pipes, null, null);
