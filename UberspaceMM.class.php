@@ -2,8 +2,9 @@
 /**
  * Class UberspaceMM
  *
- * @copyright  Luca Kling 2014
  * @author     Luca Kling <hallo@lucakling.de>
+ * @copyright  Luca Kling 2014
+ * @license    MIT <http://opensource.org/licenses/MIT>
  *
  * Parts forked from Fabian Laule <fabianlaule.de>
  */
