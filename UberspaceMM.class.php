@@ -76,10 +76,17 @@ class UberspaceMM {
 	 * @return bool
 	 */
 	public function deleteUser($strMailboxes) {
-		if(shell_exec('vdeluser ' . $strMailboxes))
-			return true;
-		else
-			return false;
+		$strCommand = 'vdeluser ' . $strMailboxes;
+		
+		$descriptorspec = array();
+		
+		$process = proc_open($strCommand, $descriptorspec, $pipes, null, null);
+		
+		if(is_resource($process)) {
+			if(proc_close($process) == 0)
+				return true;
+		}
+		return false;
 	}
 	/**
 	 * set the new Password via Shell
@@ -97,7 +104,7 @@ class UberspaceMM {
 				0 => array("pipe", "r")
 		);
 		
-		$process = proc_open($strCommand, $descriptorspec, $pipes, NULL, NULL);
+		$process = proc_open($strCommand, $descriptorspec, $pipes, null, null);
 		
 		if(is_resource($process)) {
 			fwrite($pipes[0], $strPassword);
@@ -119,10 +126,17 @@ class UberspaceMM {
 	 * @return bool
 	 */
 	public function addNewAlias($strMailbox, $strDestinations) {
-		if(shell_exec('vaddalias ' . $strMailbox . ' ' . $strDestinations))
-			return true;
-		else
-			return false;
+		$strCommand = 'vaddalias ' . $strMailbox . ' ' . $strDestinations;
+		
+		$descriptorspec = array();
+		
+		$process = proc_open($strCommand, $descriptorspec, $pipes, null, null);
+		
+		if(is_resource($process)) {
+			if(proc_close($process) == 0)
+				return true;
+		}
+		return false;
 	}
 	/**
 	 * Change/Replace forwards of an account
@@ -134,9 +148,16 @@ class UberspaceMM {
 	 * @return bool
 	 */
 	public function changeForwards($strMailbox, $strDestinations) {
-		if(shell_exec('vchforwards ' . $strMailbox . ' ' . $strDestinations))
-			return true;
-		else
-			return false;
+		$strCommand = 'vchforwards ' . $strMailbox . ' ' . $strDestinations;
+		
+		$descriptorspec = array();
+		
+		$process = proc_open($strCommand, $descriptorspec, $pipes, null, null);
+		
+		if(is_resource($process)) {
+			if(proc_close($process) == 0)
+				return true;
+		}
+		return false;
 	}
 }
