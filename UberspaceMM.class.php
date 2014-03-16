@@ -4,6 +4,8 @@
  *
  * @copyright  Luca Kling 2014
  * @author     Luca Kling <hallo@lucakling.de>
+ *
+ * Parts forked from Fabian Laule <fabianlaule.de>
  */
 class UberspaceMM {
 	/**
@@ -81,6 +83,7 @@ class UberspaceMM {
 	}
 	/**
 	 * set the new Password via Shell
+	 * @copyright Fabian Laule <fabianlaule.de>
 	 * 
 	 * @param string
 	 * @param string
