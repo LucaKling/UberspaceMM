@@ -86,6 +86,12 @@ echo <<<EOF
   <button type="submit" class="btn btn-default">Add forwarder</button>
 </form>
 EOF;
+				echo '<hr>';
+echo <<<EOF
+<form class="form-inline" role="form" action="$uri_base/SetupVirtualMailboxes/" method="POST">
+  <button type="submit" class="btn btn-default">Setup virtual mailboxes</button>
+</form>
+EOF;
 			} else {
 				echo '<p><a href="' . $uri_base . '/List/"><i class="fa fa-arrow-left"></i> Back to the listing</a></p><hr>';
 				if($path_info[1] == 'AddMailbox') {
@@ -207,6 +213,11 @@ EOF;
 					} else {
 						echo '<div class="alert alert-warning"><b>Ey!</b> Please fill out every field.</div>';
 					}
+				} else if($path_info[1] == 'SetupVirtualMailboxes') {
+					if(UberspaceMM::setupVirtualMailboxes())
+						echo '<div class="alert alert-success"><b>Yay!</b> Successfully set up virtual mailboxes.</div>';
+					else
+						echo '<div class="alert alert-danger"><b>Fuack!</b> I encountered an error while trying to set virtual mailboxes up.</div>';
 				} else {
 					echo '<div class="alert alert-warning"><b>Oh noes!</b> This page does not exist.</div>';
 				}
